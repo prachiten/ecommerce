@@ -6,6 +6,6 @@ class Products(models.Model):
     discount_price=models.FloatField()
     category=models.CharField(max_length=200)
     description=models.TextField()
-    image=models.CharField(max_length=300)
-    
+    image=models.ImageField(upload_to="images/", db_column='Image', blank=True, null=True)
+
 
