@@ -20,7 +20,13 @@ def index(request):
     paginator= Paginator(context["product_all"],4)
     page= request.GET.get('page')
     context["product_all"]= paginator.get_page(page)
-    
     return render (request,"ecomm_app/index.html",context)
+
+    ########### code for displaying detail of item ###########
+def detail(request,id):
+    context={
+        "product_object": Products.objects.get(id=id)
+        }
+    return render (request,"ecomm_app/detail.html",context)
 
 
