@@ -73,7 +73,7 @@
                 <div class="card">
                     <img src="{{product.image.url}}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <div class="card-title">
+                        <div id = "nm{{product.id}}" class="card-title">
                             {{product.title}}
                         </div>
                         <div class="card-text">
@@ -141,10 +141,28 @@
         localStorage.setItem('cart',JSON.stringify(cart))
         document.getElementById("cart").innerHTML = "Cart("+Object.keys(cart).length+")";
     });
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-        document.getElementById('cart').setAttribute('data-content','<h4>This is your cart</h4>')
-        })
+    // $(function () {
+    //    $('[data-toggle="popover"]').popover()
+    //   document.getElementById('cart').setAttribute('data-content','<h4>This is your cart</h4>')
+    //    })
+    DisplayCart(cart);
+    function DisplayCart(cart){
+        var cartstring = "" ;
+        var cartindex=1;
+        cartstring += '<h4>This is your cart</h4>';
+        for (var x in cart){
+            console.log(x);
+            cartstring += cartindex;
+            console.log(cartstring);
+            //console.log(document.getElementById("nm"+ x));
+            cartstring += document.getElementById("nm" + x).innerHTML +"Qty: " + cart[x]+ "</br>";
+            console.log("hello ecomm");
+            cartindex+=1;
+        }
+        document.getElementById('cart').setAttribute('data-content',cartstring);
+        $('[data-toggle="popover"]').popover();
+    }
+
 </script>
 </html>
 
