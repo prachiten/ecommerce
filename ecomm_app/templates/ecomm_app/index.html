@@ -80,7 +80,7 @@
                             $ {{product.price}}
                         </div>
                         <a class="btn btn-warning" href="/{{product.id}}">View</a>
-                        <button id={{product.id}} class="btn atc btn-success">Add To Cart</button>
+                        <button id="{{product.id}}" class="btn atc btn-success">Add To Cart</button>
                     </div>
                 </div>
             </div>
@@ -145,21 +145,27 @@
     //    $('[data-toggle="popover"]').popover()
     //   document.getElementById('cart').setAttribute('data-content','<h4>This is your cart</h4>')
     //    })
-    DisplayCart(cart);
-    function DisplayCart(cart){
-        var cartstring = "" ;
-        var cartindex=1;
-        cartstring += '<h4>This is your cart</h4>';
+   
+    displayCart(cart);
+    function displayCart(cart) {    //cart is perameter actually
+
+        var cartString = "";
+        cartString +=  "<h5>This is your cart</h5>";
+        var cartIndex = 1;
+        console.log(cart);
         for (var x in cart){
             console.log(x);
-            cartstring += cartindex;
-            console.log(cartstring);
-            //console.log(document.getElementById("nm"+ x));
-            cartstring += document.getElementById("nm" + x).innerHTML +"Qty: " + cart[x]+ "</br>";
-            console.log("hello ecomm");
-            cartindex+=1;
+            console.log(document.getElementById("nm" + x));
+            cartString += cartIndex +")";
+            if(document.getElementById("nm"+x) != null){
+                var ih = document.getElementById("nm" + x).innerHTML ;
+                cartString += (ih +" : " + "Qty:" + cart[x]+"</br>") ;
+                cartIndex +=1;
+            }
+            console.log(cartString);
+
         }
-        document.getElementById('cart').setAttribute('data-content',cartstring);
+        document.getElementById('cart').setAttribute('data-content', cartString);
         $('[data-toggle="popover"]').popover();
     }
 
