@@ -140,6 +140,7 @@
         // to save cart in local storage
         localStorage.setItem('cart',JSON.stringify(cart))
         document.getElementById("cart").innerHTML = "Cart("+Object.keys(cart).length+")";
+        console.log(document.getElementById("cart").innerHTML);
     });
     // $(function () {
     //    $('[data-toggle="popover"]').popover()
@@ -165,6 +166,7 @@
             console.log(cartString);
 
         }
+        cartString += "<a  href='/checkout'><button id='checkout' class='btn btn-warning'>Checkout</button></a>";
         document.getElementById('cart').setAttribute('data-content', cartString);
         $('[data-toggle="popover"]').popover();
     }

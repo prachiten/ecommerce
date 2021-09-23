@@ -29,4 +29,8 @@ def detail(request,id):
         }
     return render (request,"ecomm_app/detail.html",context)
 
+    ########### code for checkout ###########
+def checkout(request):
+    return render(request,"ecomm_app/checkout.html")
+
 
